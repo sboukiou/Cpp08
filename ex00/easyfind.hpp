@@ -1,15 +1,16 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
+#include <algorithm>
 #include <stdexcept>
 template <typename T>
 
 int	easyfind(T Param, int Num) {
 
-	for (size_t i = 0; i < Param.size(); i += 1)
-		if (Param[i] == Num)
-			return (i);
-	throw (std::out_of_range("No occurence was found"));
+	typename T::iterator num = std::find(Param.begin(), Param.end(), Num);
+	if (num == Param.end())
+		throw (std::out_of_range("No occurence was found"));
+	return (num);
 }
 
 #endif /* EASYFIND_HPP */

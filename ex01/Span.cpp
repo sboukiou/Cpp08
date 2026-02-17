@@ -60,10 +60,3 @@ int Span::longestSpan(void) {
 	int max = temp[temp.size() - 1];
 	return (max - min);
 }
-
-void	Span::insert(int begin, int end) {
-	while (begin < end) {
-		addNumber(begin);
-		begin += 1;
-	}
-}

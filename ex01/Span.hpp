@@ -1,6 +1,8 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+#include <cstddef>
+#include <stdexcept>
 #include <vector>
 class Span {
 	private:
@@ -15,7 +17,13 @@ class Span {
 		void	addNumber(int number);
 		int		shortestSpan(void);
 		int		longestSpan(void);
-		void	insert(int begin, int end);
+		template <typename It>
+		void insert(It begin, It end) {
+			const size_t	count = std::distance(begin, end);
+			if (values.size() + count > N)
+				throw(std::out_of_range("Range is out of bounds!"));
+			values.insert(values.end(), begin, end);
+		}
 };
 
 #endif /* SPAN_HPP */

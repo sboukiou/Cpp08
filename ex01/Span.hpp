@@ -15,13 +15,7 @@ class Span {
 		void	addNumber(int number);
 		int		shortestSpan(void);
 		int		longestSpan(void);
-		template <typename T>
-		void	insert(int begin, int end) {
-			while (begin < end) {
-				addNumber(begin);
-				begin += 1;
-			}
-		}
+		void	insert(int begin, int end);
 };
 
 #endif /* SPAN_HPP */

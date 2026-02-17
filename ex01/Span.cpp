@@ -14,11 +14,8 @@ Span::Span(int param) {
 }
 
 Span::Span(const Span &other) {
-	if (other.values.empty() || other.N == 0)
-		throw(std::runtime_error("Given copy is empty"));
 	N = other.N;
-	for (unsigned int i = 0; i < N; i += 1)
-		values.push_back(other.values[i]);
+	values = other.values;
 }
 
 Span::~Span(void) {}

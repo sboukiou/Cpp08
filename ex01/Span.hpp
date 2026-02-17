@@ -20,7 +20,9 @@ class Span {
 		int		longestSpan(void);
 		template <typename It>
 		void insert(It begin, It end) {
-			const size_t	count = static_cast<size_t>(std::distance(begin, end));
+			const int	count = std::distance(begin, end);
+			if (count < 0)
+				throw(std::out_of_range("Given range is negative! Myabe you swapped the interval"));
 			if (values.size() + count > N)
 				throw(std::out_of_range("Range is out of bounds!"));
 			values.insert(values.end(), begin, end);

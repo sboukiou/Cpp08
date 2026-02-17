@@ -1,6 +1,7 @@
 #include "./Span.hpp"
 #include <climits>
 #include <stdexcept>
+#include <algorithm>
 
 Span::Span(void) {
 	N = 0;
@@ -42,15 +43,8 @@ int Span::shortestSpan(void) {
 	int temp;
 	if (values.size() < 2)
 		throw(std::runtime_error("Span is too small!"));
-	for (unsigned int i = 0; i < N; i += 1)
-		for (unsigned int j = 0; j < N - 1; j += 1) {
-			if (values[j] > values[j + 1]) {
-				temp = values[j];
-				values[j] = values[j + 1];
-				values[j + 1] = temp;
-			}
-		}
-	for (unsigned int i = 0; i < N - 1; i += 1) {
+	std::sort(values.begin(), values.end());
+	for (unsigned int i = 0; i < values.size() - 1; i += 1) {
 		if (values[i + 1] - values[i] < result)
 			result = values[i + 1] - values[i];
 	}
@@ -58,18 +52,10 @@ int Span::shortestSpan(void) {
 }
 
 int Span::longestSpan(void) {
-	int max = INT_MIN;
-	int min = INT_MAX;
-	int result;
-
-	if (N < 2)
+	if (values.size() < 2)
 		throw(std::runtime_error("Span is too small!"));
-	for (unsigned int i = 0; i < N; i += 1)
-		if (values[i] > max)
-			max = values[i];
-	for (unsigned int i = 0; i < N; i += 1)
-		if (values[i] < min)
-			min = values[i];
-	result = max - min;
-	return (result);
+	std::sort(values.begin(), values.end());
+	int max = values[0];
+	int min = values[values.size() - 1];
+	return (max - min);
 }

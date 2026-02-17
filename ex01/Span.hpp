@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include <vector>
+#include <iterator>
 class Span {
 	private:
 		unsigned int	N;
@@ -19,7 +20,7 @@ class Span {
 		int		longestSpan(void);
 		template <typename It>
 		void insert(It begin, It end) {
-			const size_t	count = std::distance(begin, end);
+			const size_t	count = static_cast<size_t>(std::distance(begin, end));
 			if (values.size() + count > N)
 				throw(std::out_of_range("Range is out of bounds!"));
 			values.insert(values.end(), begin, end);

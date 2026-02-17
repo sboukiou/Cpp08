@@ -37,13 +37,14 @@ void Span::addNumber(int param) {
 
 int Span::shortestSpan(void) {
 	int result = INT_MAX;
-	int temp;
 	if (values.size() < 2)
 		throw(std::runtime_error("Span is too small!"));
-	std::sort(values.begin(), values.end());
-	for (unsigned int i = 0; i < values.size() - 1; i += 1) {
-		if (values[i + 1] - values[i] < result)
-			result = values[i + 1] - values[i];
+
+	std::vector<int> temp(values);
+	std::sort(temp.begin(), temp.end());
+	for (unsigned int i = 0; i < temp.size() - 1; i += 1) {
+		if (temp[i + 1] - temp[i] < result)
+			result = temp[i + 1] - temp[i];
 	}
 	return (result);
 }
@@ -51,8 +52,9 @@ int Span::shortestSpan(void) {
 int Span::longestSpan(void) {
 	if (values.size() < 2)
 		throw(std::runtime_error("Span is too small!"));
-	std::sort(values.begin(), values.end());
-	int min = values[0];
-	int max = values[values.size() - 1];
+	std::vector<int> temp(values);
+	std::sort(temp.begin(), temp.end());
+	int min = temp[0];
+	int max = temp[temp.size() - 1];
 	return (max - min);
 }

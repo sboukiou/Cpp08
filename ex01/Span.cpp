@@ -22,11 +22,8 @@ Span::Span(const Span &other) {
 Span::~Span(void) {}
 
 Span	&Span::operator=(const Span &other) {
-	if (other.values.empty() || other.N == 0)
-		throw(std::runtime_error("Given copy is empty"));
 	N = other.N;
-	for (unsigned int i = 0; i < other.values.size(); i += 1)
-		values.push_back(other.values[i]);
+	values = other.values;
 	return (*this);
 }
 
@@ -55,7 +52,7 @@ int Span::longestSpan(void) {
 	if (values.size() < 2)
 		throw(std::runtime_error("Span is too small!"));
 	std::sort(values.begin(), values.end());
-	int max = values[0];
-	int min = values[values.size() - 1];
+	int min = values[0];
+	int max = values[values.size() - 1];
 	return (max - min);
 }

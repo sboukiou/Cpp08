@@ -1,5 +1,5 @@
-#ifndef MUTANTSTACK_HPP
-# define MUTANTSTACK_HPP
+#ifndef MUTANT_STACK_HPP
+# define MUTANT_STACK_HPP
 
 #include <stack>
 
@@ -22,4 +22,4 @@ class MutantStack: public std::stack<T> {
 		const_iterator end() const {return (this->c.end());}
 };
 
-#endif /* MUTANTSTACK_HPP */
+#endif /* MUTANT_STACK_HPP */

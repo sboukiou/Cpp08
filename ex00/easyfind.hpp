@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <stdexcept>
 template <typename T>
-
 int	easyfind(const T &Param, int Num) {
 
 	typename T::const_iterator num = std::find(Param.begin(), Param.end(), Num);

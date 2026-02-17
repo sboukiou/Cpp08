@@ -12,11 +12,13 @@ Span::Span(int param) {
 	if (param <= 0)
 		throw(std::out_of_range("Given size is negative or Null!"));
 	N = param;
+	values.reserve(N);
 }
 
 Span::Span(const Span &other) {
 	N = other.N;
 	values = other.values;
+	values.reserve(N);
 }
 
 Span::~Span(void) {}

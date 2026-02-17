@@ -24,7 +24,7 @@ Span	&Span::operator=(const Span &other) {
 	if (other.values.empty() || other.N == 0)
 		throw(std::runtime_error("Given copy is empty"));
 	N = other.N;
-	for (unsigned int i = 0; i < N; i += 1)
+	for (unsigned int i = 0; i < other.values.size(); i += 1)
 		values.push_back(other.values[i]);
 	return (*this);
 }
@@ -40,7 +40,7 @@ void Span::addNumber(int param) {
 int Span::shortestSpan(void) {
 	int result = INT_MAX;
 	int temp;
-	if (N < 2)
+	if (values.size() < 2)
 		throw(std::runtime_error("Span is too small!"));
 	for (unsigned int i = 0; i < N; i += 1)
 		for (unsigned int j = 0; j < N - 1; j += 1) {

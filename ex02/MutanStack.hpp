@@ -1,7 +1,6 @@
 #ifndef MUTAN_STACK_HPP
 # define MUTAN_STACK_HPP
 
-#include <cstddef>
 #include <stack>
 
 template <class T>

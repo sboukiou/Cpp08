@@ -7,7 +7,7 @@ template <typename T>
 
 int	easyfind(const T &Param, int Num) {
 
-	typename T::iterator num = std::find(Param.begin(), Param.end(), Num);
+	typename T::const_iterator num = std::find(Param.begin(), Param.end(), Num);
 	if (num == Param.end())
 		throw (std::out_of_range("No occurrence was found"));
 	return (*num);

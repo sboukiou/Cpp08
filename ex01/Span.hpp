@@ -1,12 +1,11 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-#include <stdexcept>
+#include <vector>
 class Span {
 	private:
 		unsigned int	N;
-		int				*values;
-		int				cursor;
+		std::vector<int>		values;
 	public:
 		Span(void);
 		Span(int param);

@@ -1,61 +1,45 @@
 #include "./Span.hpp"
 #include <climits>
-#include <iostream>
+#include <stdexcept>
 
 Span::Span(void) {
 	N = 0;
-	cursor = 0;
-	values = NULL;
+	values.clear();
 }
 
 Span::Span(int param) {
-	if (param < 0)
-		throw(std::out_of_range("Given size is negative!"));
+	if (param <= 0)
+		throw(std::out_of_range("Given size is negative or Null!"));
 	N = param;
-	cursor = 0;
-	values = new int [N];
-	if (values == NULL)
-		throw(std::runtime_error("Failed to allocate memory"));
+	values = std::vector<int>(N);
 	for (unsigned int i = 0; i < N; i += 1)
-		values[i] = 0;
+		values.push_back(0);
 }
 
 Span::Span(const Span &other) {
-	if (other.values == NULL || other.N == 0)
+	if (other.values.empty() || other.N == 0)
 		throw(std::runtime_error("Given copy is empty"));
 	N = other.N;
-	cursor = other.cursor;
-	values = new int [N];
-	if (values == NULL)
-		throw(std::runtime_error("Failed to allocate memory"));
+	values = std::vector<int>(N);
 	for (unsigned int i = 0; i < N; i += 1)
-		values[i] = other.values[i];
+		values.push_back(other.values[i]);
 }
 
-Span::~Span(void) {
-	if (values != NULL)
-		delete [] values;
-}
+Span::~Span(void) {}
 
 Span	&Span::operator=(const Span &other) {
-	if (other.values == NULL || other.N == 0)
+	if (other.values.empty() || other.N == 0)
 		throw(std::runtime_error("Given copy is empty"));
 	N = other.N;
-	cursor = other.cursor;
-	if (values != NULL)
-		delete [] values;
-	values = new int [N];
-	if (values == NULL)
-		throw(std::runtime_error("Failed to allocate memory"));
+	values = std::vector<int>(N);
 	for (unsigned int i = 0; i < N; i += 1)
-		values[i] = other.values[i];
+		values.push_back(other.values[i]);
 	return (*this);
 }
 
 void Span::addNumber(int param) {
-	if (static_cast<unsigned int>(cursor) < N) {
-		values[cursor] = param;
-		cursor += 1;
+	if (static_cast<unsigned int>(values.size()) < N) {
+		values.push_back(param);
 	}
 	else
 		throw(std::out_of_range("Span already filled!"));

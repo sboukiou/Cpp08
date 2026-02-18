@@ -27,5 +27,5 @@
 
 **[Why would I use containers?](https://isocpp.org/wiki/faq/containers)**\
 **[C++ Standard Template Library Containers](https://www.geeksforgeeks.org/cpp/containers-cpp-stl/)**\
-**[More About STL containers](https://learn.microsoft.com/en-us/cpp/standard-library/stl-containers?view=msvc-170)**\
+**[More About STL containers](https://learn.microsoft.com/en-us/cpp/standard-library/stl-containers?view=msvc-170)**
 

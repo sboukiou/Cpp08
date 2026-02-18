@@ -23,7 +23,7 @@ class Span {
 			const int	count = std::distance(begin, end);
 			if (count < 0)
 				throw(std::out_of_range("Given range is negative! Myabe you swapped the interval"));
-			if (values.size() + count > N)
+			if (values.size() + static_cast<unsigned int>(count) > N)
 				throw(std::out_of_range("Range is out of bounds!"));
 			values.insert(values.end(), begin, end);
 		}

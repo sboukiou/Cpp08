@@ -30,7 +30,7 @@ Span	&Span::operator=(const Span &other) {
 }
 
 void Span::addNumber(int param) {
-	if (static_cast<unsigned int>(values.size()) < N) {
+	if (values.size() < N) {
 		values.push_back(param);
 	}
 	else
